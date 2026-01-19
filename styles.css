@@ -1,0 +1,1100 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #003B5C;
+    --secondary-blue: #00527a;
+    --gold: #FFD700;
+    --light-gold: #FFF4CC;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --text-dark: #1a1a1a;
+    --text-light: #b8d4e8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve touch targets for mobile */
+a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+}
+
+/* Prevent zoom on input focus on iOS */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--primary-blue);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+#navbar.scrolled {
+    background: rgba(0, 59, 92, 0.98);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-menu a:hover {
+    color: var(--gold);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    text-align: center;
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFD700" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-light);
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.4s;
+    animation-fill-mode: both;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+    background: #FFC700;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--gold);
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: var(--primary-blue);
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* About Section */
+.about {
+    padding: 6rem 0;
+    background: var(--light-gray);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.about-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 59, 92, 0.2);
+}
+
+.about-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.about-card p {
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Courses Section */
+.courses {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.courses-intro {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.courses-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    padding: 0 20px;
+}
+
+.pricing-highlight {
+    text-align: center;
+    margin: 3rem auto 4rem;
+}
+
+.price-card {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    padding: 3rem 4rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 59, 92, 0.3);
+}
+
+.price-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.price-card .course-price {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+
+.price-card .course-price span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.price-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.course-card {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 59, 92, 0.3);
+}
+
+.course-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--primary-blue);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.course-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+}
+
+.course-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.course-features li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.6;
+}
+
+.btn-course {
+    width: 100%;
+    background: var(--gold);
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.btn-course:hover {
+    background: #FFC700;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 6rem 0;
+    background: var(--light-gray);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.benefit-item {
+    position: relative;
+    padding-left: 80px;
+}
+
+.benefit-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.3;
+}
+
+.benefit-item h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.benefit-item p {
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+}
+
+.testimonials .section-header h2 {
+    color: var(--gold);
+}
+
+.testimonials .section-header p {
+    color: var(--text-light);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.stars {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.testimonial-author strong {
+    display: block;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+}
+
+.testimonial-author span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Contact Section */
+.contact {
+    padding: 6rem 0;
+    background: var(--light-gray);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+}
+
+.contact-info h3 {
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-icon {
+    font-size: 2rem;
+}
+
+.contact-method strong {
+    display: block;
+    color: var(--primary-blue);
+    margin-bottom: 0.3rem;
+}
+
+.contact-method p {
+    color: #666;
+}
+
+.whatsapp-qr {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.whatsapp-qr h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+#qrcode {
+    display: inline-block;
+    padding: 10px;
+    background: var(--white);
+    border-radius: 10px;
+}
+
+.qr-subtext {
+    margin-top: 1rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.form-group label {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #999;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.85rem;
+    background: var(--white);
+    padding: 0 5px;
+    color: var(--gold);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    opacity: 0;
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 15px;
+    border: none;
+    font-size: 1.1rem;
+}
+
+.btn-submit:hover {
+    background: var(--secondary-blue);
+    transform: translateY(-2px);
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.form-message.success {
+    background: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+.form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+/* Footer */
+.footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .about-grid,
+    .benefits-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Center all content on mobile */
+    .section-header,
+    .about-card,
+    .benefit-item,
+    .testimonial-card,
+    .contact-method {
+        text-align: center;
+    }
+
+    .benefit-item {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .benefit-number {
+        position: relative;
+        left: auto;
+        top: auto;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+
+    .contact-method {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--primary-blue);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+        gap: 1rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        display: block;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 20px 80px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px 30px;
+        text-align: center;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .about,
+    .courses,
+    .benefits,
+    .testimonials,
+    .contact {
+        padding: 4rem 0;
+    }
+
+    .courses-description {
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1.7;
+    }
+
+    .price-card {
+        padding: 2.5rem 2rem;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .price-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .price-card .course-price {
+        font-size: 3rem;
+    }
+
+    .price-card .course-price span {
+        font-size: 1.2rem;
+    }
+
+    .about-grid,
+    .courses-grid,
+    .benefits-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-card,
+    .course-card,
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+        text-align: center;
+    }
+
+    .about-card h3,
+    .course-card h3 {
+        text-align: center;
+    }
+
+    .about-card p,
+    .course-features li {
+        text-align: center;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info h3 {
+        text-align: center;
+    }
+
+    .whatsapp-qr {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    #qrcode {
+        transform: scale(0.9);
+        margin: 0 auto;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-section ul {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .section-header p {
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .about-icon {
+        font-size: 2.5rem;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+
+    .about-card h3,
+    .benefit-item h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .about-card p,
+    .benefit-item p {
+        text-align: center;
+        line-height: 1.7;
+    }
+
+    .courses-description {
+        font-size: 0.95rem;
+        text-align: center;
+        line-height: 1.7;
+        padding: 0 10px;
+    }
+
+    .price-card {
+        padding: 2rem 1.5rem;
+        width: 95%;
+    }
+
+    .price-card h3 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .price-card .course-price {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .price-subtitle {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .course-card h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .course-badge {
+        font-size: 0.75rem;
+        padding: 6px 15px;
+        top: -12px;
+        right: 15px;
+    }
+
+    .course-features li {
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .benefit-item {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .benefit-number {
+        font-size: 2.5rem;
+        position: relative;
+        left: auto;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+
+    .testimonial-text {
+        text-align: center;
+        line-height: 1.7;
+    }
+
+    .testimonial-author {
+        text-align: center;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px;
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .btn-submit {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+    }
+
+    .contact-method {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-method strong,
+    .contact-method p {
+        text-align: center;
+    }
+
+    .whatsapp-qr h4 {
+        text-align: center;
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer-section h4 {
+        text-align: center;
+    }
+
+    .footer-section p {
+        text-align: center;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .course-price {
+        font-size: 1.8rem;
+    }
+}
