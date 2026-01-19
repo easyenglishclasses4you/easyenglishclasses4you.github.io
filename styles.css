@@ -337,8 +337,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .course-card {
@@ -348,6 +355,9 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     position: relative;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
 }
 
 .course-card:hover {
@@ -375,7 +385,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .course-features {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: auto;
+    flex-grow: 1;
 }
 
 .course-features li {
@@ -389,6 +400,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--gold);
     color: var(--primary-blue);
     text-align: center;
+    margin-top: 2rem;
 }
 
 .btn-course:hover {
@@ -728,10 +740,29 @@ h1, h2, h3, h4, h5, h6 {
     /* Center all content on mobile */
     .section-header,
     .about-card,
+    .course-card,
     .benefit-item,
     .testimonial-card,
     .contact-method {
         text-align: center;
+    }
+
+    .course-card h3 {
+        text-align: center;
+    }
+
+    .course-features {
+        text-align: center;
+    }
+
+    .course-features li {
+        text-align: center;
+    }
+
+    .btn-course {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 
     .benefit-item {
