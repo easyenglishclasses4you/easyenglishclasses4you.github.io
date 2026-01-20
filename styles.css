@@ -1128,4 +1128,123 @@ h1, h2, h3, h4, h5, h6 {
     .course-price {
         font-size: 1.8rem;
     }
+}/* ===== SELECTOR DE IDIOMA - AÑADIR AL FINAL DE styles.css ===== */
+
+.language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10000;
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.language-selector:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.lang-switch {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px 8px;
+    transition: all 0.3s ease;
+    background: white;
+    outline: none;
+}
+
+.lang-switch:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-blue, #003B5C);
+}
+
+.lang-switch.active {
+    border-color: var(--gold, #FFD700);
+    background: #fffbf0;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.lang-switch img {
+    width: 32px;
+    height: 24px;
+    display: block;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .language-selector {
+        top: 10px;
+        right: 10px;
+        padding: 6px;
+        gap: 8px;
+    }
+    
+    .lang-switch {
+        padding: 4px 6px;
+    }
+    
+    .lang-switch img {
+        width: 28px;
+        height: 21px;
+    }
+}
+
+/* Asegurar que no interfiera con la navegación en scroll */
+@media (max-width: 768px) {
+    .language-selector {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Fix para testimonials visibles en móvil */
+@media (max-width: 768px) {
+    .testimonial-card {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* Fix botón Send Message centrado en móvil */
+@media (max-width: 768px) {
+    .btn-submit {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .contact-form {
+        padding: 0;
+    }
+}
+
+/* Fix QR Code visible en móvil */
+@media (max-width: 768px) {
+    #qrcode {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+    }
+    
+    #qrcode img {
+        max-width: 200px !important;
+        height: auto !important;
+    }
+    
+    .whatsapp-qr {
+        text-align: center;
+    }
 }

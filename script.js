@@ -1,3 +1,6 @@
+// Timestamp para detectar bots (anti-spam)
+window.pageLoadTime = Date.now();
+
 // Mobile Navigation Toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
@@ -47,11 +50,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Generate WhatsApp QR Code
-// IMPORTANT: Replace this phone number with your actual WhatsApp number
-// Format: Country code + number (no spaces, no + sign)
-// Example for Switzerland: 41791234567
 const whatsappNumber = '41772015401'; // +41 77 201 54 01
-
 const whatsappURL = `https://wa.me/${whatsappNumber}`;
 
 // Generate QR Code
@@ -80,23 +79,68 @@ contactForm.addEventListener('submit', async (e) => {
         message: document.getElementById('message').value
     };
     
+    // Get current language for form messages
+    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+    
+    // ===== PROTECCIÓN ANTI-SPAM =====
+    
+    // 1. Verificar honeypot (campo oculto)
+    const honeypot = document.querySelector('input[name="_gotcha"]');
+    if (honeypot && honeypot.value !== '') {
+        console.log('Bot detected via honeypot');
+        return; // Spam bot detectado, no hacer nada
+    }
+    
+    // 2. Verificar tiempo de envío (mínimo 3 segundos desde que cargó la página)
+    const timeOnPage = (Date.now() - window.pageLoadTime) / 1000;
+    if (timeOnPage < 3) {
+        showMessage('Please wait a moment before submitting.', 'error');
+        return; // Enviado demasiado rápido, probable bot
+    }
+    
+    // 3. Detectar spam keywords en mensaje
+    const spamKeywords = ['viagra', 'cialis', 'lottery', 'winner', 'bitcoin', 'crypto', 'investment opportunity', 'make money fast', 'click here', 'buy now'];
+    const messageText = formData.message.toLowerCase();
+    const containsSpam = spamKeywords.some(keyword => messageText.includes(keyword));
+    if (containsSpam) {
+        showMessage(translations[currentLang].form_error, 'error');
+        return; // Mensaje con spam detectado
+    }
+    
+    // 4. Verificar longitud mínima del mensaje (anti-bot)
+    if (formData.message.length < 10) {
+        showMessage('Please write a more detailed message.', 'error');
+        return;
+    }
+    
+    // 5. Rate limiting - solo 1 envío cada 60 segundos
+    const lastSubmit = localStorage.getItem('lastFormSubmit');
+    const now = Date.now();
+    if (lastSubmit && (now - parseInt(lastSubmit)) < 60000) {
+        const waitTime = Math.ceil((60000 - (now - parseInt(lastSubmit))) / 1000);
+        showMessage(`Please wait ${waitTime} seconds before submitting again.`, 'error');
+        return;
+    }
+    
+    // ===== FIN PROTECCIÓN ANTI-SPAM =====
+    
     // Validate form
     if (!formData.name || !formData.email || !formData.phone || !formData.course || !formData.message) {
-        showMessage('Please fill in all required fields.', 'error');
+        showMessage(translations[currentLang].form_validation_fill, 'error');
         return;
     }
     
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-        showMessage('Please enter a valid email address.', 'error');
+        showMessage(translations[currentLang].form_validation_email, 'error');
         return;
     }
     
     // Show loading state
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.textContent = translations[currentLang].form_sending;
     submitBtn.disabled = true;
     
     // Send form using FormSubmit API (FREE email service)
@@ -114,12 +158,16 @@ contactForm.addEventListener('submit', async (e) => {
                 course: formData.course,
                 message: formData.message,
                 _subject: `New English Course Inquiry from ${formData.name}`,
-                _template: 'table'
+                _template: 'table',
+                _captcha: 'false' // FormSubmit incluye su propio captcha
             })
         });
         
         if (response.ok) {
-            showMessage('Thank you! Your message has been sent successfully. We will contact you soon!', 'success');
+            // Guardar timestamp del envío
+            localStorage.setItem('lastFormSubmit', Date.now().toString());
+            
+            showMessage(translations[currentLang].form_success, 'success');
             contactForm.reset();
             
             // Optional: Also send to WhatsApp
@@ -131,7 +179,7 @@ contactForm.addEventListener('submit', async (e) => {
         }
     } catch (error) {
         console.error('Form submission error:', error);
-        showMessage('Oops! Something went wrong. Please try again or contact us directly via WhatsApp.', 'error');
+        showMessage(translations[currentLang].form_error, 'error');
     } finally {
         submitBtn.textContent = originalBtnText;
         submitBtn.disabled = false;
@@ -169,13 +217,20 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all cards for animation
 document.addEventListener('DOMContentLoaded', () => {
+    const isMobile = window.innerWidth <= 768;
     const animatedElements = document.querySelectorAll('.about-card, .course-card, .benefit-item, .testimonial-card');
     
     animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+        // En móvil, no ocultar los testimonials
+        if (isMobile && el.classList.contains('testimonial-card')) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        } else {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        }
     });
 });
 
@@ -207,23 +262,15 @@ document.querySelectorAll('.btn-course').forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Get the course name from the card
+        // Get the course card index instead of name
         const courseCard = button.closest('.course-card');
-        const courseName = courseCard.querySelector('h3').textContent;
+        const allCourseCards = document.querySelectorAll('.course-card');
+        const courseIndex = Array.from(allCourseCards).indexOf(courseCard);
         
-        // Pre-fill the course selection in the form
+        // Pre-fill the course selection in the form based on card position
         const courseSelect = document.getElementById('course');
-        const courseValue = courseName.toLowerCase().replace(' ', '-');
-        
-        // Map course names to select values
-        const courseMapping = {
-            'business english courses': 'business',
-            'general english classes': 'general',
-            'english exam preparation': 'exam',
-            'private english lessons': 'private'
-        };
-        
-        courseSelect.value = courseMapping[courseName.toLowerCase()] || '';
+        const courseValues = ['business', 'general', 'exam', 'private'];
+        courseSelect.value = courseValues[courseIndex] || '';
         
         // Scroll to contact form
         document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
