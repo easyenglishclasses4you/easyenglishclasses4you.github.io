@@ -13,7 +13,7 @@ const translations = {
         logo_text: "Manchester English Academy",
         
         // Hero Section
-        hero_title: "Englisch lernen in der Schweiz - Nur CHF 30 pro Stunde",
+        hero_title: "Englisch lernen in der Schweiz - Nur CHF 25 pro Stunde",
         hero_subtitle: "Professionelle Englischkurse mit erfahrenen Lehrern in Zürich, Genf und Basel. Business English, IELTS-Vorbereitung und Privatunterricht online oder persönlich verfügbar. Flexible Terminplanung für Ihren Lebensstil.",
         hero_btn_primary: "Buchen Sie Ihre erste Lektion",
         hero_btn_secondary: "Alle Kurse ansehen",
@@ -24,7 +24,7 @@ const translations = {
         about_card1_title: "Zertifizierte professionelle Lehrer",
         about_card1_desc: "Lernen Sie von qualifizierten Englischlehrern mit umfangreicher internationaler Lehrerfahrung und nachgewiesener Erfolgsbilanz in der Sprachausbildung in der Schweiz.",
         about_card2_title: "Erschwingliche Englischlektionen",
-        about_card2_desc: "Hochwertige Englischkurse für nur CHF 30 pro Stunde. Professionelle Sprachausbildung für jedes Budget ohne Kompromisse bei der Lehrqualität.",
+        about_card2_desc: "Hochwertige Englischkurse für nur CHF 25 pro Stunde. Professionelle Sprachausbildung für jedes Budget ohne Kompromisse bei der Lehrqualität.",
         about_card3_title: "Flexible Lernoptionen",
         about_card3_desc: "Wählen Sie zwischen Online-Englischunterricht oder Präsenzunterricht in Zürich, Genf und Basel. Terminplanung für vielbeschäftigte Schweizer Lebensstile und Arbeitsverpflichtungen.",
         about_card4_title: "Nachgewiesene Erfolgsergebnisse",
