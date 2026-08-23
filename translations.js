@@ -64,13 +64,13 @@ const translations = {
         benefit6_desc: "Gewinnen Sie wesentliche Kommunikationsfähigkeiten, die Ihrer gesamten Karriere und Ihrem persönlichen Leben zugutekommen. Englisch ist die globale Sprache für Wirtschaft, Wissenschaft und Technologie.",
         
         // Pricing (appears in courses)
-        pricing_chf: "CHF 30",
+        pricing_chf: "25 CHF",
         pricing_per_hour: "pro Stunde",
         
         // Testimonials Section
         testimonials_title: "Erfolgsgeschichten englischer Studenten in der Schweiz",
         testimonials_subtitle: "Lesen Sie Bewertungen von Studenten, die ihre Englischkenntnisse mit Manchester English Academy transformiert haben",
-        testimonial1_text: "Manchester English Academy half mir, meinen Traumjob bei einem internationalen Unternehmen in Zürich zu sichern. Der erschwingliche Business-Englischkurs für CHF 30 pro Stunde war genau das, was ich brauchte, um meine beruflichen Kommunikationsfähigkeiten zu verbessern!",
+        testimonial1_text: "Manchester English Academy half mir, meinen Traumjob bei einem internationalen Unternehmen in Zürich zu sichern. Der erschwingliche Business-Englischkurs für 25 CHF pro Stunde war genau das, was ich brauchte, um meine beruflichen Kommunikationsfähigkeiten zu verbessern!",
         testimonial1_author: "Anna Schmidt",
         testimonial1_role: "Marketing Managerin, Zürich",
         testimonial2_text: "Ich erreichte meine IELTS 8.0-Punktzahl dank ihres Experten-Prüfungsvorbereitungskurses. Die professionellen Lehrer wissen wirklich, wie man Lernen effektiv und angenehm macht. Beste Englisch-Schule in der Schweiz für Prüfungsvorbereitung!",
@@ -109,7 +109,7 @@ const translations = {
         
         // Footer
         footer_title: "Manchester English Academy",
-        footer_desc: "Premium Englischsprachbildung in der Schweiz. Erschwingliche Lektionen für CHF 30 pro Stunde mit professionellen Lehrern.",
+        footer_desc: "Premium Englischsprachbildung in der Schweiz. Erschwingliche Lektionen für 25 CHF pro Stunde mit professionellen Lehrern.",
         footer_quick_links: "Schnelllinks",
         footer_about: "Über uns",
         footer_courses: "Englischkurse",
@@ -136,7 +136,7 @@ const translations = {
         logo_text: "Manchester English Academy",
         
         // Hero Section
-        hero_title: "Learn English in Switzerland - Only CHF 30 per Hour",
+        hero_title: "Learn English in Switzerland - Only 25 CHF per Hour",
         hero_subtitle: "Professional English courses with experienced teachers in Zurich, Geneva, and Basel. Business English, IELTS preparation, and private lessons available online or in-person. Flexible scheduling to fit your lifestyle.",
         hero_btn_primary: "Book Your First Lesson",
         hero_btn_secondary: "View All Courses",
@@ -147,7 +147,7 @@ const translations = {
         about_card1_title: "Certified Professional Teachers",
         about_card1_desc: "Learn from qualified English instructors with extensive international teaching experience and proven track records in language education across Switzerland.",
         about_card2_title: "Affordable English Lessons",
-        about_card2_desc: "High-quality English courses at just CHF 30 per hour. Professional language education that fits every budget without compromising on teaching excellence.",
+        about_card2_desc: "High-quality English courses at just 25 CHF per hour. Professional language education that fits every budget without compromising on teaching excellence.",
         about_card3_title: "Flexible Learning Options",
         about_card3_desc: "Choose between online English lessons or in-person classes in Zurich, Geneva, and Basel. Scheduling designed to accommodate busy Swiss lifestyles and work commitments.",
         about_card4_title: "Proven Success Results",
@@ -187,13 +187,13 @@ const translations = {
         benefit6_desc: "Gain essential communication abilities that will benefit your entire career and personal life. English is the global language of business, science, and technology.",
         
         // Pricing (appears in courses)
-        pricing_chf: "CHF 30",
+        pricing_chf: "25 CHF",
         pricing_per_hour: "per hour",
         
         // Testimonials Section
         testimonials_title: "English Student Success Stories in Switzerland",
         testimonials_subtitle: "Read testimonials from students who transformed their English skills with Manchester English Academy",
-        testimonial1_text: "Manchester English Academy helped me secure my dream job at an international company in Zurich. The affordable business English course at CHF 30 per hour was exactly what I needed to improve my professional communication skills!",
+        testimonial1_text: "Manchester English Academy helped me secure my dream job at an international company in Zurich. The affordable business English course at 25 CHF per hour was exactly what I needed to improve my professional communication skills!",
         testimonial1_author: "Anna Schmidt",
         testimonial1_role: "Marketing Manager, Zurich",
         testimonial2_text: "I achieved my IELTS 8.0 score thanks to their expert exam preparation course. The professional teachers really know how to make learning effective and enjoyable. Best English school in Switzerland for exam preparation!",
@@ -232,7 +232,7 @@ const translations = {
         
         // Footer
         footer_title: "Manchester English Academy",
-        footer_desc: "Premium English language education in Switzerland. Affordable lessons at CHF 30 per hour with professional teachers.",
+        footer_desc: "Premium English language education in Switzerland. Affordable lessons at 25 CHF per hour with professional teachers.",
         footer_quick_links: "Quick Links",
         footer_about: "About Us",
         footer_courses: "English Courses",
